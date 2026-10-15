@@ -1,0 +1,22 @@
+{
+  "name": "iran-news-bot-cloudflare-worker",
+  "version": "2.10.3-faithful-always-on.4",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "check": "node --check worker.js",
+    "lint": "eslint worker.js",
+    "test": "bash tests/run_all.sh",
+    "test:windows": "powershell -NoProfile -ExecutionPolicy Bypass -File ./run_all.ps1",
+    "verify": "npm run check && npm run lint && npm test",
+    "validate:deploy": "node scripts/validate_deploy_config.mjs",
+    "deploy": "npm run validate:deploy && wrangler deploy"
+  },
+  "devDependencies": {
+    "eslint": "^10.7.0",
+    "wrangler": "^4.112.0"
+  }
+}
